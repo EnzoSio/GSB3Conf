@@ -4,12 +4,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
+	<title>Connexion : </title>
 
 	<style type="text/css">
 
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+
 body{
-    background: #67BE4B;
+    background: #A62626;
+    font-family: 'Comfortaa', cursive;
 }
 #container{
     width:400px;
@@ -30,6 +34,10 @@ form {
     padding-bottom: 10px;
 }
 
+label {
+    font-size:12px;
+}
+
 /* Full-width inputs */
 input[type=text], input[type=password] {
     width: 100%;
@@ -42,7 +50,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 input[type=submit] {
-    background-color: #53af57;
+    background-color: #A62626;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -52,8 +60,8 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
+    color: #A62626;
+    border: 1px solid #A62626;
 }
 
 	</style>
@@ -82,6 +90,5 @@ input[type=submit]:hover {
                 ?>
             </form>
 	</div>
-
 </body>
 </html>
