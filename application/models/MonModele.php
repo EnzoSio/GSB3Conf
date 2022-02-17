@@ -6,6 +6,10 @@
             return $query->result_array();
         }
 
+        function connexion($login, $mdp){
+            $sql = SELECT 
+        }
+
 
 
 

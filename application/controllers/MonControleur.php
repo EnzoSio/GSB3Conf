@@ -24,6 +24,10 @@ class Welcome extends CI_Controller {
 		$this->load->helper('form_helper');
 	}
 
+	public function connexion() {
+
+	}
+
 	public function insertion() {
 		$login = $this->input->post('login');
 		$mdp = $this->input->post('mdp');
