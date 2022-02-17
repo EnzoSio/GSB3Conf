@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 body{
     background: #67BE4B;
+    font-family: ;
 }
 #container{
     width:400px;
