@@ -18,9 +18,19 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		
+	public function index() {
 		$this->load->view('vue_connexion');
+		$this->load->model('MonModele');
+		$this->load->helper('form_helper');
+
+	}
+
+	public function connexion() {
+		$this->load->helper('url');
+		$login = $this->input->post('login');
+		$mdp = $this->input->post('mdp');
+		$this->load->model('MonModele');
+		$this->MonModele->insertVisiteur($login, $mdp);
+		$this->load->helper('url_helper');
 	}
 }
