@@ -76,9 +76,9 @@ input[type=submit]:hover {
                 echo form_open('MonControleur/connexion');
                 echo heading("Connexion", 1);
                 echo form_label("Login : ");
-                echo form_input('Login');
-                echo form_label("Mdp : ");
-                echo form_password('Mdp');                
+                echo form_input('login');
+                echo form_label("Mot de Passe : ");
+                echo form_password('mdp');                
                 echo form_submit("Valider", "Valider");
                 echo form_close();
             ?>

@@ -1,10 +1,15 @@
 <?php
     class MonModele extends CI_Model {
-        function getContacts() {
+        function getVisiteur() {
             $sql = "SELECT * FROM visiteur limit 2";
             $query = $this->db->query($sql);
             return $query->result_array();
         }
+
+
+
+
+
         function insertVisiteur($login, $mdp){
             $this->load->library('form_validation');
             $this->form_validation->set_rules('login', 'Login', 'required');

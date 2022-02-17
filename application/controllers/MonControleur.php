@@ -22,11 +22,9 @@ class Welcome extends CI_Controller {
 		$this->load->view('vue_connexion');
 		$this->load->model('MonModele');
 		$this->load->helper('form_helper');
-
 	}
 
-	public function connexion() {
-		$this->load->helper('url');
+	public function insertion() {
 		$login = $this->input->post('login');
 		$mdp = $this->input->post('mdp');
 		$this->load->model('MonModele');
