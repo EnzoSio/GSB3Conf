@@ -28,7 +28,16 @@ class MonControleur extends CI_Controller {
 		$mdp = $this->input->post('mdp');
 		$bool = $this->MonModele->seConnecter($login, $mdp);
 		if($bool != null){
-				$this->load->view('vue_inscription');  
+			$query = $this->MonModele->getTypeVis($login, $mdp);
+			if($query == 'V'){
+				$this->load->view('vue_inscription');
+			}
+			else{
+				$query2 = $this->MonModele->getTypeRes($login, $mdp);
+				if($query2 == 'R'){
+					$this->load->view('vue_stats');
+				}
+			}
 		}
 		else {
 			echo 'non';
