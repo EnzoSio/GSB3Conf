@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Connexion</title>
+	<title>Inscription</title>
     <?php
         echo link_tag('assets/css/styles.css');
     ?>
@@ -15,8 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!-- zone de connexion -->
             
             <?php
-                echo form_open('MonControleur/connexion');
-                echo heading("Connexion", 1);
+                echo form_open('MonControleur/inscription');
+                echo heading("Inscription", 1);
                 echo form_label("Login : ");
                 echo form_input('login', set_value('login'));
                 echo form_label("Mot de Passe : ");

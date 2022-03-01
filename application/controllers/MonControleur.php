@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Moncontroleur extends CI_Controller {
+class MonControleur extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -19,20 +19,19 @@ class Moncontroleur extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 	public function index() {
-		$this->load->view('vue_connexion');
-		$this->load->model('MonModele');
-		$this->load->helper('form_helper');
+		$this->load->view('vue_connexion');  
 	}
 
 	public function connexion() {
-
-	}
-
-	public function insertion() {
+		$this->load->model("MonModele");
 		$login = $this->input->post('login');
 		$mdp = $this->input->post('mdp');
-		$this->load->model('MonModele');
-		$this->MonModele->insertVisiteur($login, $mdp);
-		$this->load->helper('url_helper');
+		$bool = $this->MonModele->seConnecter($login, $mdp);
+		if($bool != null){
+				$this->load->view('vue_inscription');  
+		}
+		else {
+			echo 'non';
+		}
 	}
 }
