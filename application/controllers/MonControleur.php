@@ -43,4 +43,23 @@ class MonControleur extends CI_Controller {
 			echo 'non';
 		}
 	}
+	public function inscriptionConf() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('horaire', 'horaire', 'required');
+		$this->form_validation->set_rules('duree', 'duree', 'required');
+		$this->form_validation->set_rules('nbPlace', 'nbPlace', 'required');
+		$this->form_validation->set_rules('dateP', 'dateP', 'required');
+		if ($this->form_validation->run()) {
+			$id = $this->input->post('id');
+			$horaire = $this->input->post('horaire');
+			$duree = $this->input->post('duree');
+			$nbPlace = $this->input->post('nbPlace');
+			$dateP = $this->input->post('dateP');
+			$codeC = $this->input->post('codeC');
+			$code = $this->input->post('code');
+			$codeSalle = $this->input->post('codeSalle');
+			$this->load->model('MonModele');  
+			$this->MonModele->insertConf($id, $horaire, $duree, $nbPlace, $dateP, $codeC, $code, $codeSalle);
+		}
+	}
 }
