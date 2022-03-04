@@ -8,15 +8,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php
         echo link_tag('assets/css/inscription.css');
     ?>
-
 </head>
     <body>
         <div class="container">
             <header class="header">
                 <h1 id="title" class="text-center">Inscription à une conférence</h1>
-                <p id="description" class="description text-center">
-                 <?php echo "Bienvenue" . $login?>
-                </p>
+                <h3 id="description" class="description text-center">
+                    Bienvenue <?php echo $this->session->userdata('login'); ?> 
+                </h3>
             </header>
             <table class="container">
                 <thead>
@@ -39,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $item->dateP;?></td>
                         <td>Animateur</td>
                         <td><?php echo $item->codeSalle;?></td>
-                        <td><bu</td>
+                        <td><button class="button button1">S'inscrire</button></td>
                     </tr>
                 <?php }?>
                 </tbody>

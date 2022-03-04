@@ -48,7 +48,7 @@
 
         function getConf() {
             $query = $this->db->get('conference');
-            /*$sql = "SELECT * FROM contacts limit 5";
+            /*$sql = "SELECT * FROM conference";
             $query = $this->db->query($sql);*/
             return $query->result();
         }

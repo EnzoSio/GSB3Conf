@@ -5,11 +5,11 @@
  */
 
  @charset "UTF-8";
- @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+ @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
  
  body {
-   font-family: 'Open Sans', sans-serif;
-   font-weight: 300;
+  font-family: 'Comfortaa', cursive;
+  font-weight: 300;
    line-height: 1.42em;
    color:#A7A1AE;
    background-color:#1F2739;
@@ -38,8 +38,15 @@
    text-transform: uppercase;
    color: #FB667A;
    text-decoration: none;
- }
- 
+ } 
+
+ h3 {
+  font-size:1.5em; 
+  font-weight: 700;
+  color: #FFF;
+  text-align: center;
+  text-decoration: none;
+}
  .blue { color: #185875; }
  .yellow { color: #FFF842; }
  
@@ -100,17 +107,48 @@
 background-color: #428aff;
 color: #403E10;
 font-weight: bold;
-
 box-shadow: #428aff -1px 1px, #428aff -2px 2px, #428aff -3px 3px, #428aff -4px 4px, #428aff -5px 5px, #428aff -6px 6px;
 transform: translate3d(6px, -6px, 0);
-
 transition-delay: 0s;
 transition-duration: 0.4s;
 transition-property: all;
 transition-timing-function: line;
  }
+
+ .container td:last-child {
+  background-color: transparent;
+  box-shadow: none;
+  width: 210px;
+  transform: none;
+ }
+
+
  
  @media (max-width: 800px) {
  .container td:nth-child(4),
  .container th:nth-child(4) { display: none; }
  }
+ .button {
+  font-family: 'Comfortaa', cursive;
+  border: none;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  color: #A7A1AE;
+  border: 2px solid #008CBA;
+  background: transparent;
+  border-radius:15px;
+}
+
+.button1:hover {
+  background-color: #008CBA;
+  color: white;
+}

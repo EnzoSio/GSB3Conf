@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MonControleur extends CI_Controller {
-
 	/**
 	 * Index Page for this controller.
 	 *
@@ -23,6 +22,7 @@ class MonControleur extends CI_Controller {
 	}
 
 	public function connexion() {
+		$this->load->library('session');
 		$this->load->model("MonModele");
 		$login = $this->input->post('login');
 		$mdp = $this->input->post('mdp');
@@ -30,7 +30,8 @@ class MonControleur extends CI_Controller {
 		if($bool != null){
 			$query = $this->MonModele->getTypeVis($login, $mdp);
 			if($query == 'V'){
-				$data['query'] = $this->affichageBDD();				
+				$data['query'] = $this->affichageBDD();	
+				$this->session->set_userdata('login', $login);
 				$this->load->view('vue_inscription', $data);
 
 
