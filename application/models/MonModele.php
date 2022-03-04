@@ -1,5 +1,19 @@
 <?php
     class MonModele extends CI_Model {
+
+    private $table = "contact";
+	
+	function __construct() {
+		parent::__construct();
+		$this->load->database();
+	}
+
+
+
+
+
+
+
         function seConnecter($login, $mdp) {
             $mdpChiffré = sha1($mdp);
             $this->db->where('login', $login);
@@ -53,19 +67,13 @@
             return $query->result();
         }
 
+        function insertInscri($code, $id, $CodeC) {
+            $insc = array('code'=>$code, 'id'=>$id, 'CodeC'=>$CodeC);
+            $this->db->insert('inscris', $insc);
+	    }
 
-        function insertConf($id, $horaire, $duree, $nbPlace, $dateP, $codeC, $code, $codeSalle) {
-            $conf = array('id'=>'4', 
-            'horaire'=>$horaire, 
-            'duree'=>$duree, 
-            'nbPlace'=>$nbPlace,
-            'dateP'=>$dateP, 
-            'codeC'=>'1', 
-            'code'=>$code, 
-            'codeSalle'=>$codeSalle);
-            $this->db->insert('conference', $conf);
-    
-            /*return $query->result();*/
-        }
+
+
+
     }
 ?>

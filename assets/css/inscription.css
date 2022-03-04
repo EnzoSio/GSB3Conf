@@ -128,7 +128,10 @@ transition-timing-function: line;
  .container td:nth-child(4),
  .container th:nth-child(4) { display: none; }
  }
- .button {
+
+
+ 
+ input[type=submit] {
   font-family: 'Comfortaa', cursive;
   border: none;
   padding: 16px 32px;
@@ -141,14 +144,14 @@ transition-timing-function: line;
   cursor: pointer;
 }
 
-.button1 {
+input[type=submit] {
   color: #A7A1AE;
   border: 2px solid #008CBA;
   background: transparent;
   border-radius:15px;
 }
 
-.button1:hover {
+input[type=submit]:hover {
   background-color: #008CBA;
   color: white;
 }

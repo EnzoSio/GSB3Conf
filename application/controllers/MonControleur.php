@@ -56,24 +56,18 @@ class MonControleur extends CI_Controller {
     }
 
 	public function inscriptionConf() {
-		
-
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('horaire', 'horaire', 'required');
-		$this->form_validation->set_rules('duree', 'duree', 'required');
-		$this->form_validation->set_rules('nbPlace', 'nbPlace', 'required');
-		$this->form_validation->set_rules('dateP', 'dateP', 'required');
+		$this->form_validation->set_rules('code', 'Code');
+		$this->form_validation->set_rules('id', 'Id');
+		$this->form_validation->set_rules('CodeC', 'CodeC');
 		if ($this->form_validation->run()) {
+			$code = $this->input->post('code') ;
 			$id = $this->input->post('id');
-			$horaire = $this->input->post('horaire');
-			$duree = $this->input->post('duree');
-			$nbPlace = $this->input->post('nbPlace');
-			$dateP = $this->input->post('dateP');
-			$codeC = $this->input->post('codeC');
-			$code = $this->input->post('code');
-			$codeSalle = $this->input->post('codeSalle');
-			$this->load->model('MonModele');  
-			$this->MonModele->insertConf($id, $horaire, $duree, $nbPlace, $dateP, $codeC, $code, $codeSalle);
+			$CodeC = $this->input->post('CodeC');
+			$this->load->model('Monmodele');  
+			$this->MonModele->insertInscri($code, $id, $CodeC);
 		}
+		$this->index();
 	}
 }
+

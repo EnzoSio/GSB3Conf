@@ -38,7 +38,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $item->dateP;?></td>
                         <td>Animateur</td>
                         <td><?php echo $item->codeSalle;?></td>
-                        <td><button class="button button1">S'inscrire</button></td>
+                        <td>
+                            <?php
+                                echo form_open('MonControleur/inscriConf');                            
+                                echo form_submit("S'inscrire", "S'inscrire");
+                                echo form_close();
+                            ?>
+                            </form>
+                        </td>
                     </tr>
                 <?php }?>
                 </tbody>
