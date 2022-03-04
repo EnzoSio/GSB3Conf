@@ -28,6 +28,9 @@
             }
             return $rep;
         }
+
+        
+
         function getTypeRes($login, $mdp){
             $mdpChiffré = sha1($mdp);
             $this->db->where('login', $login);
@@ -42,8 +45,24 @@
             }
             return $rep;
         }
+
+        function getConf() {
+            $query = $this->db->get('conference');
+            /*$sql = "SELECT * FROM contacts limit 5";
+            $query = $this->db->query($sql);*/
+            return $query->result();
+        }
+
+
         function insertConf($id, $horaire, $duree, $nbPlace, $dateP, $codeC, $code, $codeSalle) {
-            $conf = array('id'=>, 'horaire'=>$horaire, 'duree'=>$duree, 'nbPlace'=>$nbPlace, 'dateP'=>$dateP, 'codeC'=>'1', 'code'=>$code, 'codeSalle'=>$codeSalle);
+            $conf = array('id'=>'4', 
+            'horaire'=>$horaire, 
+            'duree'=>$duree, 
+            'nbPlace'=>$nbPlace,
+            'dateP'=>$dateP, 
+            'codeC'=>'1', 
+            'code'=>$code, 
+            'codeSalle'=>$codeSalle);
             $this->db->insert('conference', $conf);
     
             /*return $query->result();*/

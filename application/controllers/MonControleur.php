@@ -30,7 +30,10 @@ class MonControleur extends CI_Controller {
 		if($bool != null){
 			$query = $this->MonModele->getTypeVis($login, $mdp);
 			if($query == 'V'){
-				$this->load->view('vue_inscription');
+				$data['query'] = $this->affichageBDD();				
+				$this->load->view('vue_inscription', $data);
+
+
 			}
 			else{
 				$query2 = $this->MonModele->getTypeRes($login, $mdp);
@@ -43,7 +46,17 @@ class MonControleur extends CI_Controller {
 			echo 'non';
 		}
 	}
+
+
+
+	public function affichageBDD() {
+        $this->load->model('MonModele');
+        return $this->MonModele->getConf();
+    }
+
 	public function inscriptionConf() {
+		
+
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('horaire', 'horaire', 'required');
 		$this->form_validation->set_rules('duree', 'duree', 'required');
