@@ -40,7 +40,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $item->codeSalle;?></td>
                         <td>
                             <?php
-                                echo form_open('MonControleur/inscriConf');                            
+                                echo form_open('MonControleur/inscriptionConf');
+                                $idVisiteur = $idVis->id;   
+                                echo form_hidden('idVisiteur', $idVisiteur);
+                                echo form_hidden('idConf', $item->id);
+                                echo form_hidden('idTheme', $item->CodeC);
                                 echo form_submit("S'inscrire", "S'inscrire");
                                 echo form_close();
                             ?>

@@ -3,16 +3,10 @@
 
     private $table = "contact";
 	
-	function __construct() {
-		parent::__construct();
-		$this->load->database();
-	}
-
-
-
-
-
-
+        function __construct() {
+            parent::__construct();
+            $this->load->database();
+        }
 
         function seConnecter($login, $mdp) {
             $mdpChiffré = sha1($mdp);
@@ -43,8 +37,6 @@
             return $rep;
         }
 
-        
-
         function getTypeRes($login, $mdp){
             $mdpChiffré = sha1($mdp);
             $this->db->where('login', $login);
@@ -62,18 +54,19 @@
 
         function getConf() {
             $query = $this->db->get('conference');
-            /*$sql = "SELECT * FROM conference";
-            $query = $this->db->query($sql);*/
             return $query->result();
         }
 
-        function insertInscri($code, $id, $CodeC) {
-            $insc = array('code'=>$code, 'id'=>$id, 'CodeC'=>$CodeC);
+        function insertInscri($idVisiteur, $idConf, $idTheme) {
+            $insc = array('code'=>$idVisiteur, 'id'=>$idConf, 'CodeC'=>$idTheme);
             $this->db->insert('inscris', $insc);
 	    }
 
-
-
-
+        function recupId($login){
+            $req = "SELECT id FROM visiteur WHERE login = ?";
+            $query = $this->db->query($req, array($login));
+            $query = $query->row();
+            return $query;
+        }
     }
 ?>

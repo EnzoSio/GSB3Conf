@@ -32,14 +32,15 @@ class MonControleur extends CI_Controller {
 			if($query == 'V'){
 				$data['query'] = $this->affichageBDD();	
 				$this->session->set_userdata('login', $login);
+				$data['idVis'] = $this->MonModele->recupId($login);
 				$this->load->view('vue_inscription', $data);
-
-
 			}
 			else{
 				$query2 = $this->MonModele->getTypeRes($login, $mdp);
 				if($query2 == 'R'){
-					$this->load->view('vue_stats');
+					$data['queryy'] = $this->affichageBDD();
+					$this->session->set_userdata('login', $login);
+					$this->load->view('vue_stats', $data);
 				}
 			}
 		}
@@ -49,6 +50,7 @@ class MonControleur extends CI_Controller {
 	}
 
 
+	
 
 	public function affichageBDD() {
         $this->load->model('MonModele');
@@ -57,17 +59,20 @@ class MonControleur extends CI_Controller {
 
 	public function inscriptionConf() {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('code', 'Code');
-		$this->form_validation->set_rules('id', 'Id');
-		$this->form_validation->set_rules('CodeC', 'CodeC');
+		$this->form_validation->set_rules('idVisiteur', 'idVisiteur', 'required');
+		$this->form_validation->set_rules('idConf', 'idConf', 'required');
+		$this->form_validation->set_rules('idTheme', 'idTheme', 'required');
 		if ($this->form_validation->run()) {
-			$code = $this->input->post('code') ;
-			$id = $this->input->post('id');
-			$CodeC = $this->input->post('CodeC');
-			$this->load->model('Monmodele');  
-			$this->MonModele->insertInscri($code, $id, $CodeC);
+			$idVisiteur = $this->input->post('idVisiteur');
+			$idConf = $this->input->post('idConf');
+			$idTheme = $this->input->post('idTheme');
+			$this->load->model('MonModele');  
+			$this->MonModele->insertInscri($idVisiteur, $idConf, $idTheme);
 		}
-		$this->index();
+		$login = $this->session->userdata('login');
+		$data['idVis'] = $this->MonModele->recupId($login);
+		$data['query'] = $this->affichageBDD();
+		$this->load->view('vue_inscription', $data);
 	}
 }
 
