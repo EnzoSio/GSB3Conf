@@ -15,6 +15,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <h1 id="title" class="text-center">Inscription à une conférence</h1>
                 <h3 id="description" class="description text-center">
                     Bienvenue <?php echo $this->session->userdata('login'); ?> 
+                    <?php
+                echo form_open('MonControleur/');
+                        echo form_submit("Se déconnecter", "Se déconnecter");
+                    ?>
                 </h3>
             </header>
             <table class="container">
@@ -68,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $item->CodeC;?></td>
                         <td>
                             <?php
-                                echo form_open('MonControleur/desinscriptionConf');
+                                echo form_open('MonControleur/');
                                 $idVisiteur = $idVis->id;   
                                 echo form_hidden('idVisiteur', $idVisiteur);
                                 echo form_hidden('idConf', $item->code);
@@ -78,7 +82,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             ?>
                         </td>
                     </tr>
+
+                    
                 <?php }?>
+                
                 </tbody>
             </table>   
         </div>
