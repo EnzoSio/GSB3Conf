@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <h3 id="description" class="description text-center">
                     Bienvenue <?php echo $this->session->userdata('login'); ?> 
                     <?php
-                echo form_open('MonControleur/');
+                        echo form_open('MonControleur/');
                         echo form_submit("Se déconnecter", "Se déconnecter");
                     ?>
                 </h3>
@@ -24,11 +24,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <table class="container">
                 <thead>
                     <tr>
+                        <th><h1>Identifiant Conférence</h1></th>
                         <th><h1>Horaire</h1></th>
                         <th><h1>Durée</h1></th>
                         <th><h1>Places</h1></th>
                         <th><h1>Date</h1></th>
-                            <th><h1>Salle</h1></th>
+                        <th><h1>Salle</h1></th>
                         <th><h1>Inscription</h1></th>
                     </tr>
                 </thead>
@@ -36,6 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php foreach($query as $item) {?>
                     <tr>
                         <td><?php echo $item->id;?></td>
+                        <td><?php echo $item->horaire;?></td>
                         <td><?php echo $item->duree;?></td>
                         <td><?php echo $item->nbPlace;?></td>
                         <td><?php echo $item->dateP;?></td>
@@ -58,8 +60,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <table class="container">
                 <thead>
                     <tr>
-                        <th><h1>idVis</h1></th>
                         <th><h1>idConf</h1></th>
+                        <th><h1>idVis</h1></th>
                         <th><h1>idTheme</h1></th>
                         <th><h1>option</h1></th>
                     </tr>
@@ -72,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $item->CodeC;?></td>
                         <td>
                             <?php
-                                echo form_open('MonControleur/');
+                                echo form_open('MonControleur/desinscriptionConf');
                                 $idVisiteur = $idVis->id;   
                                 echo form_hidden('idVisiteur', $idVisiteur);
                                 echo form_hidden('idConf', $item->code);

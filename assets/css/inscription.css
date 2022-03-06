@@ -118,7 +118,7 @@ transition-timing-function: line;
  .container td:last-child {
   background-color: transparent;
   box-shadow: none;
-  width: 210px;
+  width: 245px;
   transform: none;
  }
 
