@@ -57,9 +57,19 @@
             return $query->result();
         }
 
+        function getInscris() {
+            $query = $this->db->get('inscris');
+            return $query->result();
+        }
+
         function insertInscri($idVisiteur, $idConf, $idTheme) {
             $insc = array('code'=>$idVisiteur, 'id'=>$idConf, 'CodeC'=>$idTheme);
             $this->db->insert('inscris', $insc);
+	    }
+
+        function deleteInscri($idVisiteur, $idConf, $idTheme) {
+            $insc = array('code'=>$idVisiteur, 'id'=>$idConf, 'CodeC'=>$idTheme);
+            $this->db->delete('inscris', $insc);
 	    }
 
         function recupId($login){
@@ -68,5 +78,7 @@
             $query = $query->row();
             return $query;
         }
+
+        
     }
 ?>

@@ -30,7 +30,9 @@ class MonControleur extends CI_Controller {
 		if($bool != null){
 			$query = $this->MonModele->getTypeVis($login, $mdp);
 			if($query == 'V'){
-				$data['query'] = $this->affichageBDD();	
+				$data['query'] = $this->affichageConf();
+				$data['inscris'] = $this->affichageInscris();	
+
 				$this->session->set_userdata('login', $login);
 				$data['idVis'] = $this->MonModele->recupId($login);
 				$this->load->view('vue_inscription', $data);
@@ -38,7 +40,7 @@ class MonControleur extends CI_Controller {
 			else{
 				$query2 = $this->MonModele->getTypeRes($login, $mdp);
 				if($query2 == 'R'){
-					$data['queryy'] = $this->affichageBDD();
+					$data['queryy'] = $this->affichageConf();
 					$this->session->set_userdata('login', $login);
 					$this->load->view('vue_stats', $data);
 				}
@@ -52,9 +54,14 @@ class MonControleur extends CI_Controller {
 
 	
 
-	public function affichageBDD() {
+	public function affichageConf() {
         $this->load->model('MonModele');
         return $this->MonModele->getConf();
+    }
+
+	public function affichageInscris() {
+        $this->load->model('MonModele');
+        return $this->MonModele->getInscris();
     }
 
 	public function inscriptionConf() {
@@ -71,7 +78,25 @@ class MonControleur extends CI_Controller {
 		}
 		$login = $this->session->userdata('login');
 		$data['idVis'] = $this->MonModele->recupId($login);
-		$data['query'] = $this->affichageBDD();
+		$data['query'] = $this->affichageConf();
+		$this->load->view('vue_inscription', $data);
+	}
+	public function desinscriptionConf() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('idVisiteur', 'idVisiteur', 'required');
+		$this->form_validation->set_rules('idConf', 'idConf', 'required');
+		$this->form_validation->set_rules('idTheme', 'idTheme', 'required');
+		if ($this->form_validation->run()) {
+			$idVisiteur = $this->input->post('idVisiteur');
+			$idConf = $this->input->post('idConf');
+			$idTheme = $this->input->post('idTheme');
+			$this->load->model('MonModele');  
+			$this->MonModele->deleteInscri($idVisiteur, $idConf, $idTheme);
+		}
+		$login = $this->session->userdata('login');
+		$data['idVis'] = $this->MonModele->recupId($login);
+		$data['query'] = $this->affichageconf();
+		$data['inscris'] = $this->affichageInscris();
 		$this->load->view('vue_inscription', $data);
 	}
 }
