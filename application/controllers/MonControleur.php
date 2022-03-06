@@ -32,7 +32,6 @@ class MonControleur extends CI_Controller {
 			if($query == 'V'){
 				$data['query'] = $this->affichageConf();
 				$data['inscris'] = $this->affichageInscris();	
-
 				$this->session->set_userdata('login', $login);
 				$data['idVis'] = $this->MonModele->recupId($login);
 				$this->load->view('vue_inscription', $data);
