@@ -30,16 +30,20 @@ class MonControleur extends CI_Controller {
 		if($bool != null){
 			$query = $this->MonModele->getTypeVis($login, $mdp);
 			if($query == 'V'){
-				$data['query'] = $this->affichageBDD();	
+					
 				$this->session->set_userdata('login', $login);
+				$data['query'] = $this->affichageConf();
+				$data['inscris'] = $this->affichageInscris();
+				$data['idVis'] = $this->MonModele->recupId($login);
 				$this->load->view('vue_inscription', $data);
-
-
 			}
 			else{
 				$query2 = $this->MonModele->getTypeRes($login, $mdp);
 				if($query2 == 'R'){
-					$this->load->view('vue_stats');
+					$data['queryy'] = $this->affichageConf();
+					$data['inscriis'] = $this->affichageInscris();
+					$this->session->set_userdata('login', $login);
+					$this->load->view('vue_stats', $data);
 				}
 			}
 		}
@@ -49,31 +53,53 @@ class MonControleur extends CI_Controller {
 	}
 
 
+	
 
-	public function affichageBDD() {
+	public function affichageConf() {
         $this->load->model('MonModele');
         return $this->MonModele->getConf();
     }
 
-	public function inscriptionConf() {
-		
+	public function affichageInscris() {
+        $this->load->model('MonModele');
+        return $this->MonModele->getInscris();
+    }
 
+	public function inscriptionConf() {
 		$this->load->library('form_validation');
-		$this->form_validation->set_rules('horaire', 'horaire', 'required');
-		$this->form_validation->set_rules('duree', 'duree', 'required');
-		$this->form_validation->set_rules('nbPlace', 'nbPlace', 'required');
-		$this->form_validation->set_rules('dateP', 'dateP', 'required');
+		$this->form_validation->set_rules('idVisiteur', 'idVisiteur', 'required');
+		$this->form_validation->set_rules('idConf', 'idConf', 'required');
+		$this->form_validation->set_rules('idTheme', 'idTheme', 'required');
 		if ($this->form_validation->run()) {
-			$id = $this->input->post('id');
-			$horaire = $this->input->post('horaire');
-			$duree = $this->input->post('duree');
-			$nbPlace = $this->input->post('nbPlace');
-			$dateP = $this->input->post('dateP');
-			$codeC = $this->input->post('codeC');
-			$code = $this->input->post('code');
-			$codeSalle = $this->input->post('codeSalle');
+			$idVisiteur = $this->input->post('idVisiteur');
+			$idConf = $this->input->post('idConf');
+			$idTheme = $this->input->post('idTheme');
 			$this->load->model('MonModele');  
-			$this->MonModele->insertConf($id, $horaire, $duree, $nbPlace, $dateP, $codeC, $code, $codeSalle);
+			$this->MonModele->insertInscri($idVisiteur, $idConf, $idTheme);
 		}
+		$login = $this->session->userdata('login');
+		$data['idVis'] = $this->MonModele->recupId($login);
+		$data['inscris'] = $this->affichageInscris();
+		$data['query'] = $this->affichageConf();
+		$this->load->view('vue_inscription', $data);
+	}
+	public function desinscriptionConf() {
+		$this->load->library('form_validation');
+		$this->form_validation->set_rules('idVisiteur', 'idVisiteur', 'required');
+		$this->form_validation->set_rules('idConf', 'idConf', 'required');
+		$this->form_validation->set_rules('idTheme', 'idTheme', 'required');
+		if ($this->form_validation->run()) {
+			$idVisiteur = $this->input->post('idVisiteur');
+			$idConf = $this->input->post('idConf');
+			$idTheme = $this->input->post('idTheme');
+			$this->load->model('MonModele');  
+			$this->MonModele->deleteInscri($idVisiteur, $idConf, $idTheme);
+		}
+		$login = $this->session->userdata('login');
+		$data['idVis'] = $this->MonModele->recupId($login);
+		$data['query'] = $this->affichageconf();
+		$data['inscris'] = $this->affichageInscris();
+		$this->load->view('vue_inscription', $data);
 	}
 }
+

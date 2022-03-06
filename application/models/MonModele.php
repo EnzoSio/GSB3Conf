@@ -1,5 +1,13 @@
 <?php
     class MonModele extends CI_Model {
+
+    private $table = "contact";
+	
+        function __construct() {
+            parent::__construct();
+            $this->load->database();
+        }
+
         function seConnecter($login, $mdp) {
             $mdpChiffré = sha1($mdp);
             $this->db->where('login', $login);
@@ -29,8 +37,6 @@
             return $rep;
         }
 
-        
-
         function getTypeRes($login, $mdp){
             $mdpChiffré = sha1($mdp);
             $this->db->where('login', $login);
@@ -48,24 +54,31 @@
 
         function getConf() {
             $query = $this->db->get('conference');
-            /*$sql = "SELECT * FROM conference";
-            $query = $this->db->query($sql);*/
             return $query->result();
         }
 
-
-        function insertConf($id, $horaire, $duree, $nbPlace, $dateP, $codeC, $code, $codeSalle) {
-            $conf = array('id'=>'4', 
-            'horaire'=>$horaire, 
-            'duree'=>$duree, 
-            'nbPlace'=>$nbPlace,
-            'dateP'=>$dateP, 
-            'codeC'=>'1', 
-            'code'=>$code, 
-            'codeSalle'=>$codeSalle);
-            $this->db->insert('conference', $conf);
-    
-            /*return $query->result();*/
+        function getInscris() {
+            $query = $this->db->get('inscris');
+            return $query->result();
         }
+
+        function insertInscri($idVisiteur, $idConf, $idTheme) {
+            $insc = array('code'=>$idVisiteur, 'id'=>$idConf, 'CodeC'=>$idTheme);
+            $this->db->insert('inscris', $insc);
+	    }
+
+        function deleteInscri($idVisiteur, $idConf, $idTheme) {
+            $insc = array('code'=>$idVisiteur, 'id'=>$idConf, 'CodeC'=>$idTheme);
+            $this->db->delete('inscris', $insc);
+	    }
+
+        function recupId($login){
+            $req = "SELECT id FROM visiteur WHERE login = ?";
+            $query = $this->db->query($req, array($login));
+            $query = $query->row();
+            return $query;
+        }
+
+        
     }
 ?>

@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<meta charset="utf-8">
 	<title>Connexion</title>
     <?php
-        echo link_tag('assets/css/styles.css');
+        echo link_tag('assets/css/connexion.css');
     ?>
 
 </head>
@@ -16,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             <?php
                 echo form_open('MonControleur/connexion');
+                echo img('images/logo.png');
                 echo heading("Connexion", 1);
                 echo form_label("Login : ");
                 echo form_input('login', set_value('login'));

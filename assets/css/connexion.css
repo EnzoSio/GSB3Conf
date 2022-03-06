@@ -2,7 +2,7 @@
 
 
 body{
-    background: #A62626;
+    background: #1F2739;
     font-family: 'Comfortaa', cursive;
 }
 #container{
@@ -20,11 +20,23 @@ form {
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
+
+#container img{
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+   width: 120px;
+}
+
 #container h1{
-    width: 38%;
+    width: 30%;
     margin: 0 auto;
     padding-bottom: 10px;
+    font-size: 20px;
 }
+
+
 
 label {
     font-size:12px;
@@ -42,7 +54,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 input[type=submit] {
-    background-color: #A62626;
+    background-color: #4DC3FA;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -52,6 +64,6 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #A62626;
-    border: 1px solid #A62626;
+    color: #4DC3FA;
+    border: 1px solid #4DC3FA;
 }
