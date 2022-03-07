@@ -16,8 +16,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <h3 id="description" class="description text-center">
                     Bienvenue <?php echo $this->session->userdata('login'); ?> 
                     <?php
-                        echo form_open('MonControleur/');
-                        echo form_submit("Se déconnecter", "Se déconnecter");
+                        //echo form_open('MonControleur/');
+                        //echo form_submit("Se déconnecter", "Se déconnecter");
                     ?>
                 </h3>
             </header>
@@ -77,7 +77,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 echo form_open('MonControleur/desinscriptionConf');
                                 $idVisiteur = $idVis->id;   
                                 echo form_hidden('idVisiteur', $idVisiteur);
-                                echo form_hidden('idConf', $item->code);
+                                echo form_hidden('idConf', $item->id);
                                 echo form_hidden('idTheme', $item->CodeC);
                                 echo form_submit("Se désinscrire", "Se désinscrire");
                                 echo form_close();

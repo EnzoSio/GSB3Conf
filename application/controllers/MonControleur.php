@@ -94,6 +94,7 @@ class MonControleur extends CI_Controller {
 			$idTheme = $this->input->post('idTheme');
 			$this->load->model('MonModele');  
 			$this->MonModele->deleteInscri($idVisiteur, $idConf, $idTheme);
+			echo 'visiteur = '.$idVisiteur.' conf = '.$idConf.' theme = '.$idTheme;
 		}
 		$login = $this->session->userdata('login');
 		$data['idVis'] = $this->MonModele->recupId($login);
