@@ -20,7 +20,7 @@ class MonControleur extends CI_Controller {
 	public function index() {
 		$this->load->view('vue_connexion');  
 	}
-
+	//Fonction de connexion avec la comparaison de statut
 	public function connexion() {
 		$this->load->library('session');
 		$this->load->model("MonModele");
@@ -51,20 +51,17 @@ class MonControleur extends CI_Controller {
 			echo 'non';
 		}
 	}
-
-
-	
-
+	//Récupération de la fonction getConf du modèle
 	public function affichageConf() {
         $this->load->model('MonModele');
         return $this->MonModele->getConf();
     }
-
+	//Récupération de la fonction getInscris du modèle
 	public function affichageInscris() {
         $this->load->model('MonModele');
         return $this->MonModele->getInscris();
     }
-
+	//Fonction permettant d'inscrire des conférences pour les visiteurs
 	public function inscriptionConf() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('idVisiteur', 'idVisiteur', 'required');
@@ -83,6 +80,7 @@ class MonControleur extends CI_Controller {
 		$data['query'] = $this->affichageConf();
 		$this->load->view('vue_inscription', $data);
 	}
+	//Fonction permettant de se désinscrire des conférences pour les visiteurs
 	public function desinscriptionConf() {
 		$this->load->library('form_validation');
 		$this->form_validation->set_rules('idVisiteur', 'idVisiteur', 'required');
@@ -94,7 +92,6 @@ class MonControleur extends CI_Controller {
 			$idTheme = $this->input->post('idTheme');
 			$this->load->model('MonModele');  
 			$this->MonModele->deleteInscri($idVisiteur, $idConf, $idTheme);
-			echo 'visiteur = '.$idVisiteur.' conf = '.$idConf.' theme = '.$idTheme;
 		}
 		$login = $this->session->userdata('login');
 		$data['idVis'] = $this->MonModele->recupId($login);
