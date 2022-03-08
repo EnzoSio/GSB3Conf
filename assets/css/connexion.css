@@ -1,23 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+
 body{
-    background: #67BE4B;
+    background: #1F2739;
+    font-family: 'Comfortaa', cursive;
 }
 #container{
     width:400px;
-    margin:0 auto;
+    margin-left:auto;
+    margin-right:auto;
     margin-top:10%;
 }
 /* Bordered form */
 form {
     width:100%;
+    
     padding: 30px;
     border: 1px solid #f1f1f1;
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
+
+
+#container img{
+   margin-left: auto;
+   margin-right: auto;
+   display: block;
+   width: 120px;
+}
+
 #container h1{
-    width: 38%;
+    width: 30%;
     margin: 0 auto;
     padding-bottom: 10px;
+    font-size: 20px;
+}
+
+
+
+label {
+    font-size:12px;
 }
 
 /* Full-width inputs */
@@ -32,7 +54,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 input[type=submit] {
-    background-color: #53af57;
+    background-color: #4DC3FA;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -42,6 +64,6 @@ input[type=submit] {
 }
 input[type=submit]:hover {
     background-color: white;
-    color: #53af57;
-    border: 1px solid #53af57;
+    color: #4DC3FA;
+    border: 1px solid #4DC3FA;
 }
